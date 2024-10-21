@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-[black] text-2xl font-light text-[white] antialiased md:text-4xl xl:text-6xl;
+}
