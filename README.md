@@ -10,3 +10,4 @@ If you would like to use a package manager other than PNPM, feel free! Just upda
 2. Copy .env.example to .env and set the values with your Sanity configuration.
 3. Run `pnpx sanity dataset import sanity/seed.ndjson` to add some seed content to your Sanity instance.
 4. Run `pnpm run dev` to get started developing.
+5. Visit `http://localhost:3000` to view your site, and `http://localhost:3000/studio` to use Sanity Studio.
