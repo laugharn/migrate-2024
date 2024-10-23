@@ -17,7 +17,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
     }),
   )
 
-  res.status(200).json({ isAuthenticated: true })
+  return res.status(200).json({ isAuthenticated: true })
 }
 
 export default handler
