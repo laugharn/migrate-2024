@@ -1,6 +1,8 @@
+'use server'
+
 import { cookies } from 'next/headers'
 
-export async function GET() {
+export async function login() {
   await (
     await cookies()
   ).set('workshop_auth', 'true', {
@@ -9,5 +11,12 @@ export async function GET() {
     maxAge: 3600, // 1 hour
     path: '/',
   })
-  return Response.json({ isAuthenticated: true })
+
+  return { isAuthenticated: true }
+}
+
+export async function logout() {
+  await (await cookies()).delete('workshop_auth')
+
+  return { isAuthenticated: false }
 }

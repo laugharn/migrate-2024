@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from './link'
+import { logout } from '@/lib/auth'
 import { parseCookies } from 'nookies'
 import { usePathname, useRouter } from 'next/navigation'
 
@@ -21,15 +22,12 @@ function Auth() {
     return (
       <button
         className="text-[rgb(0,87,255)] hover:text-[blue]"
-        onClick={() => {
-          fetch('/api/logout').then(async (res) => {
-            await res.json()
-            setIsAuthenticated(false)
+        onClick={async () => {
+          await logout()
 
-            if (asPath === '/dashboard') {
-              push('/login')
-            }
-          })
+          if (asPath === '/dashboard') {
+            push('/login')
+          }
         }}
       >
         Logout.

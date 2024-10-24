@@ -1,6 +1,7 @@
 'use client'
 
 import Article from '@/components/article'
+import { login } from '@/lib/auth'
 import { useRouter } from 'next/navigation'
 
 function Login() {
@@ -8,15 +9,15 @@ function Login() {
   return (
     <Article>
       <form
-        onSubmit={(e) => {
+        onSubmit={async (e) => {
           e.preventDefault()
-          fetch('/api/login').then(async (res) => {
-            const data = await res.json()
-            if (data.isAuthenticated === true) {
-              const url = new URL(window.location.href)
-              push(url.searchParams.get('returnTo') ?? '/')
-            }
-          })
+
+          const data = await login()
+
+          if (data.isAuthenticated === true) {
+            const url = new URL(window.location.href)
+            push(url.searchParams.get('returnTo') ?? '/')
+          }
         }}
       >
         <input className="w-full appearance-none bg-transparent" placeholder="Name" type="text" />
