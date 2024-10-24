@@ -28,6 +28,8 @@ function Auth() {
           if (asPath === '/dashboard') {
             push('/login')
           }
+
+          setIsAuthenticated(false)
         }}
       >
         Logout.
