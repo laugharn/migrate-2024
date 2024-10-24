@@ -1,10 +1,13 @@
+'use client'
+
 import { useEffect, useState } from 'react'
 import Link from './link'
 import { parseCookies } from 'nookies'
-import { useRouter } from 'next/router'
+import { usePathname, useRouter } from 'next/navigation'
 
 function Auth() {
-  const { asPath, push } = useRouter()
+  const asPath = usePathname()
+  const { push } = useRouter()
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>()
 
